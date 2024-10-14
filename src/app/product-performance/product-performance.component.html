@@ -1,0 +1,34 @@
+<h1>Product Performance</h1>
+
+<!-- Form for adding a new product performance -->
+<form (ngSubmit)="onSubmit()">
+  <label for="unit_sold">Units Sold:</label>
+  <input type="number" id="unit_sold" [(ngModel)]="newPerformance.unit_sold" name="unit_sold" required>
+
+  <label for="rating">Rating:</label>
+  <input type="number" id="rating" [(ngModel)]="newPerformance.rating" name="rating" required>
+
+  <button type="submit">Submit</button>
+</form>
+
+<!-- Display the fetched product performance data -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Units Sold</th>
+      <th>Rating</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let performance of data">
+      <td>{{ performance._id }}</td>
+      <td>{{ performance.unit_sold }}</td>
+      <td>{{ performance.rating }}</td>
+      <td>
+        <button (click)="deletePerformance(performance._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

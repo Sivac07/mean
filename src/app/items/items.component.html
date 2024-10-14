@@ -1,0 +1,39 @@
+<h1>{{ title }}</h1>
+
+<!-- Form for adding a new item -->
+<form (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="newItem.name" name="name" required>
+
+  <label for="description">Description:</label>
+  <input type="text" id="description" [(ngModel)]="newItem.details" name="description" required>
+
+  <label for="price">Price:</label>
+  <input type="number" id="price" [(ngModel)]="newItem.price" name="price" required>
+
+  <button type="submit">Submit</button>
+</form>
+
+<!-- Display the fetched data -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Actions</th> <!-- New column for Delete button -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{ item._id }}</td> <!-- Use _id instead of id -->
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.price }}</td>
+      <td>
+        <button (click)="deleteItem(item._id)">Delete</button> <!-- Use _id instead of id -->
+      </td>
+    </tr>
+  </tbody>
+</table>
